@@ -45,7 +45,7 @@ public class Level : MonoBehaviour {
 
 	private void goToLevel(string suffix){
 		//try to find the next level
-		GameObject next = transform.parent.Find ("Level" + suffix).gameObject;
+		Transform next = transform.parent.Find ("Level" + suffix);
 		if (next != null) {
 			//remove created UI elements
 			Object.Destroy (text.gameObject);
@@ -56,7 +56,7 @@ public class Level : MonoBehaviour {
 
 			//hide this and activate next level
 			gameObject.SetActive (false);
-			next.GetComponent<Level> ().Activate ();
+			next.gameObject.GetComponent<Level> ().Activate ();
 		} else {
 			Debug.Log ("Can't find Level" + suffix);
 		}
